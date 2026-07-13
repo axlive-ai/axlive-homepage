@@ -147,6 +147,7 @@
 
     <form name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="contact">
+      <input type="hidden" name="subject" value="AXlive 서비스 문의">
       <p style="position:absolute; left:-9999px;">
         <label>이 항목은 채우지 마세요: <input name="bot-field"></label>
       </p>
@@ -154,16 +155,16 @@
       <div class="grid">
         <div class="field">
           <label>이름 <span class="req">*</span></label>
-          <input type="text" name="name" required>
+          <input type="text" name="이름" required>
         </div>
         <div class="field">
           <label>회사명 <span class="req">*</span></label>
-          <input type="text" name="company" required>
+          <input type="text" name="회사명" required>
         </div>
 
         <div class="field">
           <label>직책</label>
-          <input type="text" name="title">
+          <input type="text" name="직책">
         </div>
         <div class="field">
           <label>이메일 <span class="req">*</span></label>
@@ -172,11 +173,11 @@
 
         <div class="field">
           <label>연락처</label>
-          <input type="text" name="phone">
+          <input type="text" name="연락처">
         </div>
         <div class="field">
           <label>관심 분야 <span class="req">*</span></label>
-          <select name="interest" required>
+          <select name="관심분야" required>
             <option value="" selected disabled>선택해 주세요</option>
             <option>AI Behavior Design</option>
             <option>Conversation Design</option>
@@ -190,7 +191,7 @@
 
       <div class="field">
         <label>예상 프로젝트 일정</label>
-        <select name="timeline">
+        <select name="예상일정">
           <option value="" selected disabled>선택해 주세요</option>
           <option>1개월 이내</option>
           <option>1~3개월</option>
@@ -201,7 +202,7 @@
 
       <div class="field">
         <label>문의 내용 <span class="req">*</span></label>
-        <textarea name="message" rows="5" placeholder="현재 상황과 검토 중인 과제를 알려주세요." required></textarea>
+        <textarea name="문의내용" rows="5" placeholder="현재 상황과 검토 중인 과제를 알려주세요." required></textarea>
       </div>
 
       <div class="recaptcha-wrap" data-netlify-recaptcha="true"></div>
