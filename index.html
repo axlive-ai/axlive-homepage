@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
   <meta charset="utf-8">
   <title>axlive homepage</title>
@@ -8,5 +8,29 @@
   <h1>Welcome to the axlive Homepage</h1>
   <p>This is a simple homepage for the axlive project.</p>
   <p>axlive.ai.kr</p>
+
+  <h2>서비스 문의</h2>
+  <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="contact">
+    <p style="display:none;">
+      <label>이 항목은 채우지 마세요: <input name="bot-field"></label>
+    </p>
+    <p>
+      <label>이름<br>
+        <input type="text" name="name" required>
+      </label>
+    </p>
+    <p>
+      <label>이메일<br>
+        <input type="email" name="email" required>
+      </label>
+    </p>
+    <p>
+      <label>문의 내용<br>
+        <textarea name="message" rows="6" required></textarea>
+      </label>
+    </p>
+    <button type="submit">보내기</button>
+  </form>
 </body>
 </html>
