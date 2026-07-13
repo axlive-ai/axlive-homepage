@@ -1,37 +1,218 @@
-<!-- v2 -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>axlive homepage</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 48px 20px;
+      background: #05070d;
+      color: #e5e7eb;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Pretendard", "Malgun Gothic", sans-serif;
+    }
+    .wrap {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .brand {
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      color: #7dd3fc;
+      margin-bottom: 8px;
+    }
+    h1 {
+      font-size: 26px;
+      margin: 0 0 6px;
+    }
+    .sub {
+      color: #9ca3af;
+      margin: 0 0 32px;
+      font-size: 14px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 560px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #f3f4f6;
+    }
+    .req {
+      color: #2dd4bf;
+      margin-left: 2px;
+    }
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      background: #11141f;
+      border: 1px solid #262b3a;
+      border-radius: 10px;
+      padding: 12px 14px;
+      color: #f3f4f6;
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color .15s, box-shadow .15s;
+      appearance: none;
+    }
+    select {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%239ca3af'><path d='M5.5 7.5l4.5 5 4.5-5z'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-size: 16px;
+      padding-right: 36px;
+    }
+    select:invalid,
+    select option[value=""] {
+      color: #9ca3af;
+    }
+    input::placeholder,
+    textarea::placeholder {
+      color: #6b7280;
+    }
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #22d3ee;
+      box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.15);
+    }
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 400;
+      color: #9ca3af;
+      line-height: 1.5;
+    }
+    .consent input[type="checkbox"] {
+      margin-top: 3px;
+      width: 16px;
+      height: 16px;
+      accent-color: #22d3ee;
+      flex-shrink: 0;
+    }
+    .consent a {
+      color: #7dd3fc;
+      text-decoration: underline;
+    }
+    button[type="submit"] {
+      border: none;
+      border-radius: 999px;
+      padding: 16px 24px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #ffffff;
+      background: linear-gradient(90deg, #2563eb, #7c3aed);
+      cursor: pointer;
+    }
+    button[type="submit"]:hover {
+      filter: brightness(1.08);
+    }
+    .recaptcha-wrap {
+      display: flex;
+      justify-content: center;
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to the axlive Homepage</h1>
-  <p>This is a simple homepage for the axlive project.</p>
-  <p>axlive.ai.kr</p>
+  <div class="wrap">
+    <div class="brand">AXLIVE</div>
+    <h1>서비스 문의</h1>
+    <p class="sub">궁금한 점이나 프로젝트 문의를 남겨주시면 순차적으로 연락드리겠습니다.</p>
 
-  <h2>서비스 문의</h2>
-  <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-    <input type="hidden" name="form-name" value="contact">
-    <p style="display:none;">
-      <label>이 항목은 채우지 마세요: <input name="bot-field"></label>
-    </p>
-    <p>
-      <label>이름<br>
-        <input type="text" name="name" required>
+    <form name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contact">
+      <p style="position:absolute; left:-9999px;">
+        <label>이 항목은 채우지 마세요: <input name="bot-field"></label>
+      </p>
+
+      <div class="grid">
+        <div class="field">
+          <label>이름 <span class="req">*</span></label>
+          <input type="text" name="name" required>
+        </div>
+        <div class="field">
+          <label>회사명 <span class="req">*</span></label>
+          <input type="text" name="company" required>
+        </div>
+
+        <div class="field">
+          <label>직책</label>
+          <input type="text" name="title">
+        </div>
+        <div class="field">
+          <label>이메일 <span class="req">*</span></label>
+          <input type="email" name="email" required>
+        </div>
+
+        <div class="field">
+          <label>연락처</label>
+          <input type="text" name="phone">
+        </div>
+        <div class="field">
+          <label>관심 분야 <span class="req">*</span></label>
+          <select name="interest" required>
+            <option value="" selected disabled>선택해 주세요</option>
+            <option>AI Behavior Design</option>
+            <option>Conversation Design</option>
+            <option>AI Behavior Framework 도입</option>
+            <option>Evaluation · AI 품질</option>
+            <option>Prototype 제작</option>
+            <option>전체 AX 프로젝트</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>예상 프로젝트 일정</label>
+        <select name="timeline">
+          <option value="" selected disabled>선택해 주세요</option>
+          <option>1개월 이내</option>
+          <option>1~3개월</option>
+          <option>3~6개월</option>
+          <option>6개월 이상 / 미정</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>문의 내용 <span class="req">*</span></label>
+        <textarea name="message" rows="5" placeholder="현재 상황과 검토 중인 과제를 알려주세요." required></textarea>
+      </div>
+
+      <div class="recaptcha-wrap" data-netlify-recaptcha="true"></div>
+
+      <label class="consent">
+        <input type="checkbox" name="consent" required>
+        <span>개인정보 수집 및 이용에 동의합니다. 문의 응대 목적에 한해 사용되며, 관련 내용은 <a href="#">개인정보처리방침</a>을 따릅니다. <span class="req">*</span></span>
       </label>
-    </p>
-    <p>
-      <label>이메일<br>
-        <input type="email" name="email" required>
-      </label>
-    </p>
-    <p>
-      <label>문의 내용<br>
-        <textarea name="message" rows="6" required></textarea>
-      </label>
-    </p>
-    <button type="submit">보내기</button>
-  </form>
+
+      <button type="submit">문의하기 →</button>
+    </form>
+  </div>
 </body>
 </html>
