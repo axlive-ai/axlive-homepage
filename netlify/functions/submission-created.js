@@ -86,7 +86,7 @@ exports.handler = async function (event) {
       },
       body: JSON.stringify({
         From: "septemai@septem-ai.com",
-        To: "septemai@septem-ai.com",
+        To: "septemai@septem-ai.com, oyj@septem-ai.com",
         ReplyTo: parameters.email || undefined,
         Subject: "AXlive 서비스 문의",
         HtmlBody: renderEmailHtml(parameters),
