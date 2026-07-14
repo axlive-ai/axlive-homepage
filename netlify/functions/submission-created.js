@@ -16,7 +16,7 @@ function escapeHtml(str) {
 function renderEmailHtml(p) {
   return `<html>
   <body style="margin:0; padding:0; background:#05070d; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', sans-serif;">
-    <table width="100%" cellpadding="0" cellspacing="0" style="background:#05070d; padding:32px 0;">
+    <table width="640" cellpadding="0" cellspacing="0" style="background:#05070d; padding:32px 0; border-radius:12px">
       <tr>
         <td align="center">
           <table width="560" cellpadding="0" cellspacing="0" style="background:#11141f; border:1px solid #262b3a; border-radius:14px; overflow:hidden;">
