@@ -85,7 +85,7 @@ exports.handler = async function (event) {
         "X-Postmark-Server-Token": token,
       },
       body: JSON.stringify({
-        From: "septemai@septem-ai.com",
+        From: "AXLIVE <septemai@septem-ai.com>",
         To: "septemai@septem-ai.com, oyj@septem-ai.com",
         ReplyTo: parameters.email || undefined,
         Subject: "AXlive 서비스 문의",
