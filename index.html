@@ -2374,6 +2374,36 @@ revealEls.forEach(el=>io.observe(el));
       show(map[clean]);
     }
   });
+
+  var contactForm = document.querySelector('form[name="contact"]');
+  if(contactForm){
+    contactForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var submitBtn = contactForm.querySelector('button[type="submit"]');
+      var originalLabel = submitBtn ? submitBtn.textContent : '';
+      if(submitBtn){ submitBtn.disabled = true; submitBtn.textContent = '전송 중...'; }
+      var fd = new FormData(contactForm);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(fd).toString()
+      }).then(function(res){
+        if(res.ok){
+          contactForm.reset();
+          if(window.grecaptcha){ try{ window.grecaptcha.reset(); }catch(err){} }
+          show('home');
+          alert('문의가 접수되었습니다. 빠르게 연락드리겠습니다.');
+        } else {
+          alert('문의 전송에 실패했습니다. 잠시 후 다시 시도해주세요.');
+        }
+      }).catch(function(){
+        alert('문의 전송에 실패했습니다. 잠시 후 다시 시도해주세요.');
+      }).finally(function(){
+        if(submitBtn){ submitBtn.disabled = false; submitBtn.textContent = originalLabel; }
+      });
+    });
+  }
+
   show('home');
 })();
 
